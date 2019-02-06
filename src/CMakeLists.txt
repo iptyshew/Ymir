@@ -1,7 +1,6 @@
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+set(TARGET ymir)
 
-add_executable(ymir main.cpp)
+add_executable(${TARGET} main.cpp)
 add_subdirectory(utils)
 
-target_link_libraries(ymir utils ${CONAN_LIBS})
+target_link_libraries(${TARGET} utils ${CONAN_LIBS})
