@@ -29,8 +29,7 @@ TypeArg classify(const std::string_view param) {
 
 ArgParser::ArgParser(const int argc, char** argv)
     : argc_(argc)
-    , argv_(argv)
-{
+    , argv_(argv) {
     if (argv == nullptr) {
         throw std::runtime_error("Invalid argv list");
     }
@@ -75,23 +74,20 @@ void ArgParser::parse() {
 
     std::string_view arg;
     while (nextArg(arg)) {
-        switch (classify(arg)) {
-            case TypeArg::Key: {
-                const auto found = paramToAttr_.find(arg);
-                if (found != paramToAttr_.end()) {
-                    std::string_view val;
-                    if (found->second.has_value) {
-                        if (!nextArg(val) || classify(val) != TypeArg::Value) {
-                            throw std::runtime_error("Expected val for parameter "s + arg.data());
-                        }
+        if (classify(arg) == TypeArg::Key) {
+            const auto found = paramToAttr_.find(arg);
+            if (found != paramToAttr_.end()) {
+                std::string_view val;
+                if (found->second.has_value) {
+                    if (!nextArg(val) || classify(val) != TypeArg::Value) {
+                        throw std::runtime_error("Expected val for parameter "s + arg.data());
                     }
-                    paramToVal_.emplace(found->first, val);
-                    break;
                 }
+                paramToVal_.emplace(found->first, val);
             }
-            default: {
-                throw std::runtime_error("Unexpected parameter "s + arg.data());
-            }
+        }
+        else {
+            throw std::runtime_error("Unexpected parameter "s + arg.data());
         }
     }
 }
