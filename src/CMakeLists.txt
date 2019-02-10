@@ -2,8 +2,6 @@ set(TARGET ymir)
 
 set(SOURCES
   main.cpp
-  utils/arg_parser.h
-  utils/arg_parser.cpp
 
   ast/ast.h
 
@@ -18,5 +16,6 @@ set(SOURCES
   frontend/types.h)
 
 add_executable(${TARGET} ${SOURCES})
+add_subdirectory(utils)
 
-target_link_libraries(${TARGET} ${CONAN_LIBS})
+target_link_libraries(${TARGET} utils ${CONAN_LIBS})

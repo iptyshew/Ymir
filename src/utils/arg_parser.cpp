@@ -27,7 +27,7 @@ TypeArg classify(const std::string_view param) {
 
 } // namespace
 
-ArgParser::ArgParser(const int argc, char** argv)
+ArgParser::ArgParser(const int argc, const char** argv)
     : argc_(argc)
     , argv_(argv) {
     if (argv == nullptr) {
@@ -57,7 +57,7 @@ bool ArgParser::has(const std::string_view name) const {
     return paramToVal_.find(name) != paramToVal_.end();
 }
 
-std::string_view ArgParser::get(const std::string_view name) const {
+std::optional<std::string_view> ArgParser::get(const std::string_view name) const {
     return paramToVal_.find(name)->second;
 }
 
@@ -83,7 +83,9 @@ void ArgParser::parse() {
                         throw std::runtime_error("Expected val for parameter "s + arg.data());
                     }
                 }
-                paramToVal_.emplace(found->first, val);
+                paramToVal_.emplace(
+                        found->first,
+                        val.empty() ? std::nullopt : std::make_optional(val));
             }
         }
         else {

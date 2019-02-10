@@ -2,6 +2,7 @@
 #include <string>
 #include <map>
 #include <ostream>
+#include <optional>
 
 namespace ymir::utils
 {
@@ -9,7 +10,7 @@ namespace ymir::utils
 class ArgParser
 {
 public:
-    ArgParser(const int argc, char** argv);
+    ArgParser(const int argc, const char** argv);
 
     //\todo Auto add prefix  −−
     ArgParser& addParam(const std::string& name,
@@ -21,7 +22,7 @@ public:
     void parse();
 
     bool has(const std::string_view name) const;
-    std::string_view get(const std::string_view name) const;
+    std::optional<std::string_view> get(const std::string_view name) const;
 
 private:
     struct ParamAttr
@@ -32,9 +33,9 @@ private:
 
 private:
     const int argc_;
-    char** argv_;
+    const char** argv_;
     std::map<std::string, ParamAttr, std::less<>> paramToAttr_;
-    std::map<std::string_view, std::string_view> paramToVal_;
+    std::map<std::string_view, std::optional<std::string_view>> paramToVal_;
 };
 
 } // namespace ymir::utils
