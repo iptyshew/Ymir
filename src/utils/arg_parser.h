@@ -3,7 +3,7 @@
 #include <map>
 #include <ostream>
 
-namespace Ymir::utils
+namespace ymir::utils
 {
 
 class ArgParser
@@ -37,4 +37,4 @@ private:
     std::map<std::string_view, std::string_view> paramToVal_;
 };
 
-} // namespace Ymir
+} // namespace ymir::utils
