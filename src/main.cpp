@@ -1,9 +1,10 @@
 #include <iostream>
 #include <vector>
-#include "arg_parser.h"
+#include "frontend/frontend.h"
+#include "utils/arg_parser.h"
 
 int main(int argc, char** argv) {
-    Ymir::utils::ArgParser argParser(argc, argv);
+    ymir::utils::ArgParser argParser(argc, argv);
     argParser
         .addParam("--file", "Path to file with source code", true)
         .addParam("--help", "Print help");
@@ -18,7 +19,10 @@ int main(int argc, char** argv) {
             std::cout << "--file option is required\n";
             return 0;
         }
-        std::cout << argParser.get("--file") << std::endl;
+
+        ymir::Frontend frontend;
+        frontend.compile(argParser.get("--file"));
+
         return 0;
     }
     catch (const std::exception& err) {

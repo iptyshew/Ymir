@@ -1,6 +1,6 @@
 #include "arg_parser.h"
 
-namespace Ymir::utils
+namespace ymir::utils
 {
 
 namespace
@@ -96,4 +96,4 @@ void ArgParser::parse() {
     }
 }
 
-} // namespace Ymir
+} // namespace ymir::utils
