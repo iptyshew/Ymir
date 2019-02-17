@@ -1,2 +1,6 @@
 build
 .DS_Store
+cmake-build-debug
+.idea
+.cquery_cached_index
+compile_commands.json
