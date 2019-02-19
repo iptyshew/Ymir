@@ -1,0 +1,47 @@
+
+programm:           instruction_list
+                  ;
+
+intstruction_list:  instruction_list instruction
+                  | instruction
+                  ;
+
+instruction:        declaration
+                  | statement
+                  ;
+
+
+declaration:        "int" definition_list ';'
+                  ;
+
+definition_list:    definition_list ',' definition
+                  | definition
+                  ;
+
+definition:         ID '=' expr
+                  | ID
+                  ;
+
+
+statement:          ID '=' expr ';'
+                  | expr ';'
+                  ;
+
+expr:               expr bin_op expr
+                  | '(' expr ')'
+                  | ID '=' expr
+                  | maybe_sign NUMBER
+                  | maybe_sign ID
+                  ;
+
+maybe_sign:         '+'
+                  | '-'
+                  | %empty
+                  ;
+
+bin_op:            '+' | '*' | '/' | '-' ;
+
+// Operator priority
+%precedence 10 '*' '/'
+%precedence 5  '+' '-'
+%precedence 1  '='
