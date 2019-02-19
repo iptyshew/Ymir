@@ -1,25 +1,15 @@
 #pragma once
-#include <variant>
-#include <optional>
+#include "ilexer.h"
 #include "source.h"
 
 namespace ymir
 {
 
-enum class Token
-{
-    Number,
-    String,
-    Eof
-};
-
-using TokenVal = std::variant<int, std::string>;
-
-class Lexer
+class Lexer : public ILexer
 {
 public:
     Lexer(const Source& source);
-    std::pair<Token, std::optional<TokenVal>> lex();
+    std::pair<Token, std::optional<TokenVal>> lex() override;
 
 private:
     const Source& source_;

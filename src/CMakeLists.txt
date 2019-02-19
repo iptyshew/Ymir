@@ -10,6 +10,7 @@ set(SOURCES
   frontend/frontend.h
   frontend/frontend.cpp
   frontend/lexer.h
+  frontend/ilexer.h
   frontend/lexer.cpp
   frontend/syntax_parser.h
   frontend/syntax_parser.cpp

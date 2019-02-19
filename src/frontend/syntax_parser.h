@@ -1,6 +1,6 @@
 #pragma once
 #include "../ast/ast.h"
-#include "lexer.h"
+#include "ilexer.h"
 
 namespace ymir
 {
@@ -8,10 +8,10 @@ namespace ymir
 class SyntaxParser
 {
 public:
-    SyntaxParser(Lexer& lexer);
+    SyntaxParser(ILexer& lexer);
     ASTP parse();
 private:
-    Lexer& lexer_;
+    ILexer& lexer_;
 };
 
 } // namespace ymir

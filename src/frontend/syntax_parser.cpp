@@ -4,7 +4,7 @@
 namespace ymir
 {
 
-SyntaxParser::SyntaxParser(Lexer& lexer)
+SyntaxParser::SyntaxParser(ILexer& lexer)
     : lexer_(lexer) {
 
 }
