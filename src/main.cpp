@@ -3,7 +3,7 @@
 #include "frontend/frontend.h"
 #include "utils/arg_parser.h"
 
-int main(int argc, char** argv) {
+int main(int argc, const char** argv) {
     ymir::utils::ArgParser argParser(argc, argv);
     argParser
         .addParam("--file", "Path to file with source code", true)
@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
         }
 
         ymir::Frontend frontend;
-        frontend.compile(argParser.get("--file"));
+        frontend.compile(*argParser.get("--file"));
 
         return 0;
     }
