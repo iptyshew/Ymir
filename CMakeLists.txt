@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9)
 
-project(Ymir)
+project(ymir)
 
 # Download automatically, you can also just copy the conan.cmake file
 if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")

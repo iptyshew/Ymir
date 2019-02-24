@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../src/utils/arg_parser.h"
+#include "arg_parser.h"
 
 using namespace ymir::utils;
 using namespace std::string_literals;
