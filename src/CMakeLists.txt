@@ -1,22 +1,11 @@
-set(TARGET ymir)
+project(driver)
 
-set(SOURCES
+set(${PROJECT_NAME}_SRC
   main.cpp
+  ast/ast.h)
 
-  ast/ast.h
-
-  frontend/frontend.h
-  frontend/frontend.cpp
-  frontend/lexer.h
-  frontend/ilexer.h
-  frontend/lexer.cpp
-  frontend/syntax_parser.h
-  frontend/syntax_parser.cpp
-  frontend/source.h
-  frontend/source.cpp
-  frontend/types.h)
-
-add_executable(${TARGET} ${SOURCES})
+add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_SRC})
 add_subdirectory(utils)
+add_subdirectory(frontend)
 
-target_link_libraries(${TARGET} utils ${CONAN_LIBS})
+target_link_libraries(${PROJECT_NAME} utils frontend ${CONAN_LIBS})
