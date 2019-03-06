@@ -9,8 +9,8 @@ ASTP Frontend::compile(const std::string_view path)
 {
     const Source source(path);
     Lexer lexer(source);
-    SyntaxParser parser(lexer);
-    return parser.parse();
+    SyntaxParser parser;
+    return parser.parse(lexer);
 }
 
 } // namespace ymir

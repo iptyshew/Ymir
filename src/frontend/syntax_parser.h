@@ -8,10 +8,7 @@ namespace ymir
 class SyntaxParser
 {
 public:
-    SyntaxParser(ILexer& lexer);
-    ASTP parse();
-private:
-    ILexer& lexer_;
+    ASTP parse(ILexer& lexer);
 };
 
 } // namespace ymir

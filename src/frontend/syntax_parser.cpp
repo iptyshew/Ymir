@@ -4,18 +4,13 @@
 namespace ymir
 {
 
-SyntaxParser::SyntaxParser(ILexer& lexer)
-    : lexer_(lexer) {
-
-}
-
-ASTP SyntaxParser::parse() {
+ASTP SyntaxParser::parse(ILexer& lexer) {
     while (true) {
-        const auto [token, tokenVal] = lexer_.lex();
+        const auto [token, tokenVal] = lexer.lex();
         if (token == Token::Eof)
             break;
         if (token == Token::Number)
-            std::cout << "Number " << (std::get<int>(*tokenVal)) << std::endl;
+            return make<ASTNumber>(std::get<int>(*tokenVal));
     }
     return nullptr;
 }
