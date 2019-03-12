@@ -20,6 +20,15 @@ Source::Source(const std::string_view path) {
             [](char c){ return static_cast<Symbol>(c);});
 }
 
+Source::Source(const char* begin, const char* end) {
+    source_.reserve(end - begin);
+    std::transform(
+            begin,
+            end,
+            std::back_inserter(source_),
+            [](char c){ return static_cast<Symbol>(c);});
+}
+
 const Symbol* Source::begin() const
 {
     return source_.data();
