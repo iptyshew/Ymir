@@ -1,9 +1,13 @@
 #pragma once
+#include <map>
 #include "ilexer.h"
 #include "source.h"
 
 namespace ymir
 {
+
+using CharTokens = std::map<char, Token>;
+using StringTokens = std::map<std::string, Token>;
 
 class Lexer : public ILexer
 {
@@ -12,6 +16,8 @@ public:
     std::pair<Token, std::optional<TokenVal>> lex() override;
 
 private:
+    static const CharTokens char_tokens;
+    static const StringTokens keyword_tokens;
     const Source& source_;
     const Symbol* const begin_;
     const Symbol* const end_;
