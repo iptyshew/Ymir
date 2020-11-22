@@ -1,6 +1,7 @@
 #pragma once
 #include <variant>
 #include <optional>
+#include <string>
 
 namespace ymir
 {
