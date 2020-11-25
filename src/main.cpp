@@ -2,6 +2,7 @@
 #include <vector>
 #include "frontend/frontend.h"
 #include "utils/arg_parser.h"
+#include "utils/ast_print.h"
 
 int main(int argc, const char** argv) {
     ymir::utils::ArgParser argParser(argc, argv);
@@ -21,7 +22,9 @@ int main(int argc, const char** argv) {
         }
 
         ymir::Frontend frontend;
-        frontend.compile(*argParser.get("--file"));
+        auto ast = frontend.compile(*argParser.get("--file"));
+        ymir::utils::ASTPrinter printer(std::cout);
+        ast->accept(printer);
 
         return 0;
     }

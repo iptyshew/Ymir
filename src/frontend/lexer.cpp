@@ -21,8 +21,7 @@ const StringTokens Lexer::keyword_tokens = {
 };
 
 Lexer::Lexer(const Source& source)
-    : source_(source)
-    , begin_(source.begin())
+    : begin_(source.begin())
     , end_(source.end())
     , head_(source.begin()) {
 }

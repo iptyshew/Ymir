@@ -10,7 +10,7 @@ class Source
 {
 public:
     explicit Source(const std::string_view path);
-    explicit Source(const char* begin, const char* end);
+    Source(const char* begin, const char* end);
     const Symbol* begin() const;
     const Symbol* end() const;
 

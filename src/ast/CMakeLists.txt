@@ -1,10 +1,9 @@
-project(utils)
-
+project(ast)
 
 set(${PROJECT_NAME}_SRC
-  arg_parser.cpp
-  arg_parser.h
-  ast_print.h
+  ast.h
+  ast.cpp
+  visitor.h
 )
 
 add_library(${PROJECT_NAME} ${${PROJECT_NAME}_SRC})

@@ -18,7 +18,6 @@ public:
 private:
     static const CharTokens char_tokens;
     static const StringTokens keyword_tokens;
-    const Source& source_;
     const Symbol* const begin_;
     const Symbol* const end_;
     const Symbol* head_;
